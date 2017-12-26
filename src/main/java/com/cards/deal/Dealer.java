@@ -22,13 +22,13 @@ public class Dealer {
 		Dealer dealer = new Dealer();
 		createCards(dealer.cardsList, cardName, "Hearts");
 		createCards(dealer.cardsList, cardName, "Spade");
-		createCards(dealer.cardsList, cardName, "Diamond");
+		createCards(dealer.cardsList, cardName, "Diamonds");
 		createCards(dealer.cardsList, cardName, "Clubs");
 		shuffleCards(dealer.cardsList);
 		
 		for(int i=0; i<52; i++) {
-			Cards card = dealer.dealCards();
-			System.out.println("Iteration "+i+" : "+"The Card retrieved is "+card.getSuiteName()+" "+card.getName());
+			Cards card = dealer.dealCards(dealer.cardsList);
+			System.out.println("Iteration "+(i+1)+" : "+"The Card retrieved is "+card.getSuiteName()+" "+card.getName());
 		}
 				
 	}
@@ -43,11 +43,12 @@ public class Dealer {
 	
 	/**
 	 * This method returns a Cards object. Typically the first element
-	 * of the ArrayList and then removes it from the master list
+	 * of the ArrayList and then removes it from the master list. If no 
+	 * element present, method returns null
 	 * @return
 	 */
-	public Cards dealCards() {
-		if(!this.cardsList.isEmpty()) {
+	public Cards dealCards(List<Cards> cardsList) {
+		if(!cardsList.isEmpty()) {
 			Cards card =  cardsList.get(0);
 			cardsList.remove(card);
 			return card;
