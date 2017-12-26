@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This Class is used to create a master list containing
+ * deck of Cards. Operations that are allowed in the class 
+ * is Shuffle, Deal (Till no other cards present)
+ * @author soumitadas
+ *
+ */
 public class Dealer {
 	
 	//Map<Integer, Cards> cardMap = new HashMap <>();
@@ -26,10 +33,19 @@ public class Dealer {
 				
 	}
 	
+	/**
+	 * Method used to shuffle the Master list of deck of cards
+	 * @param cardsList
+	 */
 	public static void shuffleCards(List<Cards> cardsList){
 		Collections.shuffle(cardsList);
 	}
 	
+	/**
+	 * This method returns a Cards object. Typically the first element
+	 * of the ArrayList and then removes it from the master list
+	 * @return
+	 */
 	public Cards dealCards() {
 		if(!this.cardsList.isEmpty()) {
 			Cards card =  cardsList.get(0);
@@ -40,10 +56,15 @@ public class Dealer {
 		}
 	}
 	
+	/**
+	 * Method used to create Cards object for a given suit
+	 * @param cardsList
+	 * @param cardArray
+	 * @param suitName
+	 */
 	public static void createCards(List<Cards> cardsList, String[] cardArray, String suitName) {
 		
 		for(int i=0; i < cardArray.length; i++) {
-			//cardMap.put(new Integer(counter), new Cards(suitName,cardArray[i],i));
 			cardsList.add(new Cards(suitName,cardArray[i],i));
 		}
 		
